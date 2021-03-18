@@ -22,7 +22,6 @@ pipeline{
 				bat 'npm test'
 			}
 		}
-		
 		stage('ProdDeploy'){
 			steps{
 				bat 'pm2 stop app.js'
