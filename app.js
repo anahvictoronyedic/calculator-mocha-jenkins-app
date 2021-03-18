@@ -1,17 +1,20 @@
 
 //importing node framework
-var express = require(‘express’);
+var express = require('express');
  
 var app = express();
 
 //Respond with "hello world" for requests that hit our root "/"
 app.get(`/:type/:a/:b`, function (req, res) {
 	
-	const {a,b} = req.params;
+	let {a,b} = req.params;
+	
+	a = parseInt(a);
+	b = parseInt(b);
 	
 	switch(req.params.type){
 		case 'add':
-		return res.send({
+		return res.json({
 			answer:a+b,
 		});
 		break;
