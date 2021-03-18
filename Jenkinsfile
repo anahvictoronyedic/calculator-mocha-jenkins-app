@@ -4,7 +4,6 @@ pipeline{
 	stages{
 		stage('Setup') {
 			steps {
-				bat 'pm2 stop app.js'
 			}
 		}
 		stage('Build'){
@@ -14,7 +13,7 @@ pipeline{
 		}
 		stage('DevDeploy'){
 			steps{
-				bat 'NODE_ENV=development pm2 app.js'
+				bat 'NODE_ENV=development pm2 start app.js'
 			}
 		}
 		stage('Test'){
@@ -25,7 +24,7 @@ pipeline{
 		stage('ProdDeploy'){
 			steps{
 				bat 'pm2 stop app.js'
-				bat 'NODE_ENV=production pm2 app.js'
+				bat 'NODE_ENV=production pm2 start app.js'
 			}
 		}
 	}
